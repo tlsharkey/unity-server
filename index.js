@@ -21,7 +21,7 @@ const readFile = promisify(fs.readFile);
 const PORT = 8080;
 
 const server = http.createServer(async (req, res) => {
-    const pathname = url.parse(req.url).pathname;
+    const pathname = decodeURIComponent(url.parse(req.url).pathname);
     const filepath = path.join(process.cwd(), pathname);
 
     try {
